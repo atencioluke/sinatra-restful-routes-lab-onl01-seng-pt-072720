@@ -4,6 +4,23 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  # code actions here!
+  get "/recipes" do
+    @recipes = Recipe.all
+    erb :"recipes/index"
+  end
+
+  post "/recipes" do
+    
+    # erb :"recipes/index"
+  end
+
+  get "/recipes/new" do
+    erb :"recipes/new"
+  end
+
+  post "/recipes/:id" do
+    @recipe = Recipe.find(params[:id])
+    erb :"recipes/show"
+  end
 
 end
